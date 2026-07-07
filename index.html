@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>まちのマップ - 沖縄の生活マップアプリ</title>
+<meta name="description" content="ガソリン価格・まちの今・災害時の店舗営業状況。沖縄の暮らしに役立つ地図アプリをまとめました。">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RXCY39HLKV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RXCY39HLKV');
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Hiragino Sans','Meiryo',sans-serif;
+  background:#f5f5f2;
+  color:#333;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+/* ヘッダー */
+#hero{
+  background:linear-gradient(160deg,#0e6e8c 0%,#14a0a0 100%);
+  color:#fff;
+  padding:36px 20px 30px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+#hero::after{
+  content:"";
+  position:absolute;
+  bottom:-2px;left:0;right:0;
+  height:16px;
+  background:#f5f5f2;
+  border-radius:100% 100% 0 0;
+}
+#hero h1{
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:.06em;
+  margin-bottom:8px;
+}
+#hero .pin{
+  display:inline-block;
+  font-size:30px;
+  margin-bottom:6px;
+  animation:drop .6s ease-out;
+}
+@keyframes drop{
+  from{transform:translateY(-18px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+#hero p{
+  font-size:13px;
+  opacity:.92;
+  line-height:1.7;
+}
+/* カードエリア */
+#apps{
+  flex:1;
+  max-width:560px;
+  width:100%;
+  margin:0 auto;
+  padding:22px 16px 10px;
+}
+.app-card{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:#fff;
+  border-radius:12px;
+  border-left:6px solid #ccc;
+  padding:16px;
+  margin-bottom:14px;
+  box-shadow:0 1px 4px rgba(0,0,0,.08);
+  text-decoration:none;
+  color:inherit;
+  transition:transform .12s ease,box-shadow .12s ease;
+}
+.app-card:active{transform:scale(.98)}
+@media(hover:hover){
+  .app-card:hover{transform:translateY(-2px);box-shadow:0 4px 10px rgba(0,0,0,.12)}
+}
+.app-card.gas{border-left-color:#1a7a35}
+.app-card.town{border-left-color:#0e6e8c}
+.app-card.disaster{border-left-color:#c0392b}
+.app-icon{
+  font-size:34px;
+  flex-shrink:0;
+  width:52px;height:52px;
+  display:flex;align-items:center;justify-content:center;
+  background:#f5f5f2;
+  border-radius:12px;
+}
+.app-info{flex:1;min-width:0}
+.app-name{
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:3px;
+}
+.app-card.gas .app-name{color:#1a7a35}
+.app-card.town .app-name{color:#0e6e8c}
+.app-card.disaster .app-name{color:#c0392b}
+.app-desc{
+  font-size:12px;
+  color:#777;
+  line-height:1.6;
+}
+.app-arrow{
+  font-size:18px;
+  color:#bbb;
+  flex-shrink:0;
+}
+/* 使い方メモ */
+#note{
+  max-width:560px;
+  width:100%;
+  margin:0 auto;
+  padding:0 16px 24px;
+}
+#note .note-box{
+  font-size:12px;
+  color:#888;
+  line-height:1.8;
+  background:#fff;
+  border-radius:10px;
+  padding:14px 16px;
+  border:1px solid #e8e8e4;
+}
+#note .note-box b{color:#555}
+/* フッター */
+footer{
+  text-align:center;
+  font-size:11px;
+  color:#aaa;
+  padding:14px 16px 22px;
+}
+</style>
+</head>
+<body>
+
+<div id="hero">
+  <div class="pin">📍</div>
+  <h1>まちのマップ</h1>
+  <p>沖縄の暮らしに役立つ地図アプリをまとめました。<br>見るだけOK・登録は気が向いたときだけ。</p>
+</div>
+
+<div id="apps">
+
+  <a class="app-card gas" href="https://aki3oka3.github.io/gasoline-navi/">
+    <div class="app-icon">⛽</div>
+    <div class="app-info">
+      <div class="app-name">ガソリン価格ナビ</div>
+      <div class="app-desc">スタンドの価格をみんなでシェア。給油メモがそのまま「今どこが安いか」の情報に。</div>
+    </div>
+    <div class="app-arrow">›</div>
+  </a>
+
+  <a class="app-card town" href="https://aki3oka3.github.io/town-status/">
+    <div class="app-icon">📢</div>
+    <div class="app-info">
+      <div class="app-name">まちのいま</div>
+      <div class="app-desc">渋滞・安売り・イベント・花火。「今起きていること」がリアルタイムで地図に浮かぶ。</div>
+    </div>
+    <div class="app-arrow">›</div>
+  </a>
+
+  <a class="app-card disaster" href="https://aki3oka3.github.io/disaster-map2/">
+    <div class="app-icon">🏪</div>
+    <div class="app-info">
+      <div class="app-name">災害時 営業状況マップ</div>
+      <div class="app-desc">台風や停電のとき、どのお店が開いているかを地図で確認・共有。</div>
+    </div>
+    <div class="app-arrow">›</div>
+  </a>
+
+</div>
+
+<div id="note">
+  <div class="note-box">
+    <b>はじめての方へ</b><br>
+    どのアプリも登録不要・無料で使えます。地図を見るだけでもOK。情報を登録するときだけ、ニックネームをひとつ決めてもらいます（本名不要）。
+  </div>
+</div>
+
+<footer>まちのマップ | 沖縄</footer>
+
+</body>
+</html>
